@@ -3,6 +3,7 @@ _site/
 
 # Ignore the directory for local files during development
 local/
+_drafts/
 
 # Ignore the Gemfile that is generated
 Gemfile.lock
@@ -10,3 +11,6 @@ Gemfile.lock
 # Ingore files created by npm
 node_modules
 package-lock.json
+
+# Ignore the virtual environment
+.venv
