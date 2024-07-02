@@ -12,7 +12,7 @@ title                    : "MillePhilosophiae"
 # title_separator          : "-"
 name                     : &name "Miura Chiaki"
 description              : &description "Researcher and entrepreneur in academic publishing and information quality control"
-url                      : https://psmuler.github.io/psmuler # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://millephilosoph.xyz # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "psmuler/psmuler"
 
