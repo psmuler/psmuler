@@ -10,10 +10,10 @@
 
 # ## Data format
 # 
-# The TSV needs to have the following columns: pub_date, title, venue, excerpt, citation, site_url, and paper_url, with a header at the top. 
+# The TSV needs to have the following columns: start_at), title, venue, excerpt, citation, site_url, and project_url, with a header at the top. 
 # 
-# - `excerpt` and `paper_url` can be blank, but the others must have values. 
-# - `pub_date` must be formatted as YYYY-MM-DD.
+# - `excerpt` and `project_url` can be blank, but the others must have values. 
+# - `start_at)` must be formatted as YYYY-MM-DD.
 # - `url_slug` will be the descriptive part of the .md file and the permalink URL for the page about the paper. The .md file will be `YYYY-MM-DD-[url_slug].md` and the permalink will be `https://[yourdomain]/publications/YYYY-MM-DD-[url_slug]`
 
 
@@ -34,7 +34,7 @@ import pandas as pd
 
 # In[3]:
 
-publications = pd.read_csv("publications.tsv", sep="\t", header=0)
+publications = pd.read_csv("./markdown_generator/projects.tsv", sep="\t", header=0)
 
 # ## Escape special characters
 # 
@@ -62,38 +62,40 @@ def html_escape(text):
 import os
 for row, item in publications.iterrows():
     
-    md_filename = str(item.pub_date) + "-" + item.title + ".md"
-    html_filename = str(item.pub_date) 
-    year = item.pub_date[:4]
+    md_filename = str(item.start_at) + "-" + item.title + ".md"
+    html_filename = str(item.start_at) 
+    year = item.start_at[:4]
     
     ## YAML variables
     
     md = "---\ntitle: \""   + item.title + '"\n'
     
-    md += """collection: publications"""
+    md += """collection: projects"""
     
-    md += """\npermalink: /publications/""" + html_filename
+    md += """\npermalink: /projects/""" + html_filename
+    md += """\ncollaborator: """ + item.collaborator
     
     if len(str(item.excerpt)) > 5:
-        md += "\nexcerpt: '" + html_escape(item.excerpt) + "'"
+        md += "\nexcerpt: '" + html_escape(item.excerpt[:280]) +"...<br/>" 
+        md += "<img src='/images/medium_" + item.thumbnail + "'>" + "</br>'"
     
-    md += "\ndate: " + str(item.pub_date) 
+    md += "\ndate: " + str(item.start_at) 
     
-    md += "\nvenue: '" + html_escape(item.venue) + "'"
+    # md += "\nvenue: '" + html_escape(item.venue) + "'"
     
-    if len(str(item.paper_url)) > 5:
-        md += "\npaperurl: '" + item.paper_url + "'"
+    if len(str(item.project_url)) > 5:
+        md += "\npaperurl: '" + item.project_url + "'"
     
     # md += "\ncitation: '" + html_escape(item.citation) + "'"
 
-    md += "\ntype: '" + html_escape(item.type) + "'"
+    # md += "\ntype: '" + html_escape(item.type) + "'"
     
     md += "\n---"
     
     ## Markdown description for individual page
     
-    if len(str(item.paper_url)) > 5:
-        md += "\n\n<a href='" + item.paper_url + "'>You can see details here.</a>\n" 
+    if len(str(item.project_url)) > 5:
+        md += "\n\n<a href='" + item.project_url + "'>You can see details here.</a>\n" 
         
     if len(str(item.excerpt)) > 5:
         md += "\n" + html_escape(item.excerpt) + "\n"
@@ -102,7 +104,7 @@ for row, item in publications.iterrows():
     
     md_filename = os.path.basename(md_filename)
        
-    with open("../_publications/" + md_filename, 'w') as f:
+    with open("./_projects/" + md_filename, 'w') as f:
         f.write(md)
 
 

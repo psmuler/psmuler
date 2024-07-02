@@ -14,7 +14,7 @@ name                     : &name "Miura Chiaki"
 description              : &description "Researcher and entrepreneur in academic publishing and information quality control"
 url                      : https://psmuler.github.io/psmuler # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "psmuler.github.io/psmuler/"
+repository               : "psmuler/psmuler"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -24,7 +24,7 @@ author:
   avatar           : "profile.png"
   name             : "Miura Chiaki"
   # pronouns         : # example: "she/her"  
-  bio              : "Researcher and entrepreneur in academic publishing and information quality control"
+  bio              : "a researcher and an entrepreneur in science of science, tackling the problem of peer review costs"
   location         : "Tokyo, Japan"
   employer         : "The University of Tokyo"
   uri              : # URL
@@ -77,8 +77,8 @@ author:
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : true # true, false (default)
 words_per_minute         : 160
-future                   : true
-read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
+future                   : false
+read_more                : "enabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false #change to true to add link to talkmap on talks page
 comments:
   provider               : false #(default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"

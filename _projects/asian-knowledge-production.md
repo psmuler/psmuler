@@ -1,6 +1,6 @@
 ---
 title: 'Asian Knowledge Production'
-excerpt: "<br/><img src='/images/500x300.png'>"
+excerpt: "<br/><img src='/images/medium_d-idea.png'>"
 permalink: /projects/akp
 ---
 
