@@ -14,3 +14,4 @@ package-lock.json
 
 # Ignore the virtual environment
 .venv
+.env
